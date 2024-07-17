@@ -18,6 +18,7 @@ public class HelloWorldBean {
 
 	@Override
 	public String toString() {
+		//bean automatically converted into JSON on response
 		return "HelloWorldBean [message=" + message + "]";
 	}
 	
