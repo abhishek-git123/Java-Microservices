@@ -3,6 +3,7 @@ package com.learning.restservices.restful_web_services.user;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.springframework.stereotype.Component;
 
@@ -15,8 +16,19 @@ public class UserDaoService {
 		users.add(new User(3, "Joe", LocalDate.now().minusYears(20)));
 	}
 	
-	public List<User> finadAll(){
+	public List<User> findAll(){
 		return users;
+	}
+	
+	public User findParticularUser(int userId){
+		/* for(User user : users) {
+			if(userId == user.getId()) {
+				return user;
+			}
+		}
+		return null; */
+		Predicate<User> predicate = user -> user.getId().equals(userId);
+		return users.stream().filter(predicate).findFirst().get();
 	}
 	
 	
