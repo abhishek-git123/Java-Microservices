@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -15,13 +17,18 @@ public class UserResource {
 		this.userDaoService = userDaoService;
 	}
 	
-	@GetMapping(path="/users")
+	@GetMapping("/users")
 	public List<User> retrieveAllUsers(){
 		return userDaoService.findAll();
 	}
 	
-	@GetMapping(path="/users/{userId}")
+	@GetMapping("/users/{userId}")
 	public User retrieveAllUsers(@PathVariable int userId){
 		return userDaoService.findParticularUser(userId);
+	}
+	
+	@PostMapping("/createUser")
+	public void createUser(@RequestBody User user) {
+		userDaoService.saveUser(user);
 	}
 }
