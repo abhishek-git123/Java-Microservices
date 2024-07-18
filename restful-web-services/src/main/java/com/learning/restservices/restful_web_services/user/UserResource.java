@@ -2,6 +2,7 @@ package com.learning.restservices.restful_web_services.user;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,8 +28,10 @@ public class UserResource {
 		return userDaoService.findParticularUser(userId);
 	}
 	
-	@PostMapping("/createUser")
-	public void createUser(@RequestBody User user) {
+	@PostMapping("/users")
+	public ResponseEntity<User> createUser(@RequestBody User user) {
 		userDaoService.saveUser(user);
+		
+		return ResponseEntity.created(null).build();
 	}
 }
