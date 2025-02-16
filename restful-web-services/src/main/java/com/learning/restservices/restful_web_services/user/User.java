@@ -13,6 +13,7 @@ public class User {
 	
 	@Past(message = "Birthdate should be in the past")
 	private LocalDate birthDate;
+	
 	public User(Integer id, String name, LocalDate birthDate) {
 		super();
 		this.id = id;
