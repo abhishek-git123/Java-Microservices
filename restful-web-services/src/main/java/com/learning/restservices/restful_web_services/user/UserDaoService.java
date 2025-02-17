@@ -27,7 +27,8 @@ public class UserDaoService {
 				return user;
 			}
 		}
-		return null; */
+		return null; 
+		*/
 		Predicate<User> predicate = user -> user.getId().equals(userId);
 		return users.stream().filter(predicate).findFirst().orElse(null);
 	}
