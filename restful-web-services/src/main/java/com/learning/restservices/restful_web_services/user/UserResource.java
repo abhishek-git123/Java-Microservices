@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import jakarta.validation.Valid;
 
 @RestController
+@RequestMapping("users")
 public class UserResource {
 	///autowired
 	@Autowired
@@ -30,14 +32,14 @@ public class UserResource {
 	}
 	*/
 	
-	@GetMapping("/users")
+	@GetMapping
 	public List<User> retrieveAllUsers(){
 		return userDaoService.findAll();
 	}
 	//EntityModel
 	//WebMVCLinkBuilder
 	
-	@GetMapping("/users/{Id}")
+	@GetMapping("{Id}")
 	public EntityModel<User> retrieveUsers(@PathVariable int Id){
 		User user = userDaoService.findParticularUser(Id);
 		
@@ -51,7 +53,7 @@ public class UserResource {
 		return entityModel;
 	}
 	
-	@PostMapping("/users")
+	@PostMapping
 	public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
 		User savedUser = userDaoService.saveUser(user);
 		//create URI of the newly created resource : using location
@@ -62,7 +64,7 @@ public class UserResource {
 		return ResponseEntity.created(location).build();
 	}
 	
-	@DeleteMapping("/users/{Id}")
+	@DeleteMapping("{Id}")
 	public void deleteUsers(@PathVariable int Id){
 		userDaoService.deleteById(Id);
 
