@@ -13,7 +13,7 @@ public class CourseJPACommandLineRunner implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args) throws Exception {
-		repository.insert(new Course(1, "Learn AWS JPA","Brad Pitt"));
+		/*repository.insert(new Course(1, "Learn AWS JPA","Brad Pitt"));
 		repository.insert(new Course(2, "Learn Azure JPA","Jack Sparrow"));
 		repository.insert(new Course(3, "Learn Dev Ops JPA","Donald Duck"));
 		
@@ -22,6 +22,7 @@ public class CourseJPACommandLineRunner implements CommandLineRunner{
 		
 		System.out.println(repository.findById(2));
 		System.out.println(repository.findById(3));
+		*/
 	}
 
 }
