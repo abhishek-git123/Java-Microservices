@@ -1,4 +1,4 @@
-create table course
+/*create table course
 (
 	id bigint not null,
 	name varchar(255) not null,
@@ -6,3 +6,4 @@ create table course
 	primary key (id)
 
 );
+*/
